@@ -41,25 +41,27 @@ class Post extends Component {
       return <Error statusCode={404} />;
     }
 
-    const heroUrl = (
+    const heroUrl =
       post._embedded &&
       post._embedded['wp:featuredmedia'] &&
       post._embedded['wp:featuredmedia'][0] &&
       post._embedded['wp:featuredmedia'][0].source_url
-    ) ? post._embedded['wp:featuredmedia'][0].source_url : false;
+        ? post._embedded['wp:featuredmedia'][0].source_url
+        : false;
 
     return (
       <Layout className="test">
         <Menu menu={headerMenu} />
         {heroUrl ? (
           <div className={`hero flex items-center post-type-${post.type}`}>
-            <img
-              className="w-100"
-              src={heroUrl}
-            />
+            <img className="w-100" src={heroUrl} />
           </div>
-        ) : ''}
-        <div className={`content mh4 mv4 w-two-thirds-l center-l post-${post.id} post-type-${post.type}`}>
+        ) : (
+          ''
+        )}
+        <div
+          className={`content mh4 mv4 w-two-thirds-l center-l post-${post.id} post-type-${post.type}`}
+        >
           <h1>{post.title.rendered}</h1>
           <div
             // eslint-disable-next-line react/no-danger

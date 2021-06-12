@@ -33,8 +33,7 @@ class Login extends Component {
         Router.push('/');
       })
       .catch(() => {
-        message =
-          'Sorry, that username and password combination is not valid.';
+        message = 'Sorry, that username and password combination is not valid.';
         this.setState({ message });
       });
   }
@@ -42,6 +41,7 @@ class Login extends Component {
   render() {
     const { username, password, message } = this.state;
     const { headerMenu } = this.props;
+    console.log(this.props);
 
     return (
       <Layout>
@@ -49,10 +49,26 @@ class Login extends Component {
         <div className="content login mh4 mv4 w-two-thirds-l center-l">
           <div>
             <h1>Log in</h1>
-            <p>Starter Kit allows you to log in via the JavaScript frontend, meaning you can interact with the backend without gaining admin access.</p>
-            <p><strong>Log in to view hidden posts only available to authenticated users.</strong></p>
-            <p className="message mb3"><strong>{message}</strong></p>
-            <form onSubmit={(e) => {this.login(); e.preventDefault()}}>
+            <p>
+              Starter Kit allows you to log in via the JavaScript frontend,
+              meaning you can interact with the backend without gaining admin
+              access.
+            </p>
+            <p>
+              <strong>
+                Log in to view hidden posts only available to authenticated
+                users.
+              </strong>
+            </p>
+            <p className="message mb3">
+              <strong>{message}</strong>
+            </p>
+            <form
+              onSubmit={e => {
+                this.login();
+                e.preventDefault();
+              }}
+            >
               <input
                 className="db w-100 pa3 mv3 br6 ba b--black"
                 value={username}

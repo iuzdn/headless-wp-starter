@@ -1,6 +1,7 @@
 .next
 node_modules
 .idea
+/certificates
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
